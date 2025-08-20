@@ -47,8 +47,8 @@ if ($isPostgres) {
 }
 
 // Load models
-require 'models/Author.php';
-require 'models/Book.php';
+require 'models/author.php';
+require 'models/book.php';
 
 $authorModel = new Author($db);
 $bookModel = new Book($db);
