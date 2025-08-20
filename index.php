@@ -101,4 +101,22 @@ switch ($pathParts[0]) {
             $bookModel->create($data['title'], $data['year'], $data['author_id']);
             echo json_encode(['message' => 'Book created']);
         } elseif (isset($pathParts[1])) {
-            $id = (int)$path
+                        $id = (int)$pathParts[1];
+            $data = json_decode(file_get_contents('php://input'), true);
+            if ($method === 'GET') {
+                echo json_encode($bookModel->findById($id));
+            } elseif ($method === 'PUT' || $method === 'PATCH') {
+                $bookModel->update($id, $data['title'], $data['year'], $data['author_id']);
+                echo json_encode(['message' => 'Book updated']);
+            } elseif ($method === 'DELETE') {
+                $bookModel->delete($id);
+                echo json_encode(['message' => 'Book deleted']);
+            }
+        }
+        break;
+
+    default:
+        http_response_code(404);
+        echo json_encode(['error' => 'Route not found']);
+        break;
+}
