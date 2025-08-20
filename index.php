@@ -100,8 +100,8 @@ switch ($pathParts[0]) {
             $data = json_decode(file_get_contents('php://input'), true);
             $bookModel->create($data['title'], $data['year'], $data['author_id']);
             echo json_encode(['message' => 'Book created']);
-        } elseif (isset($pathParts[1])) {
-                        $id = (int)$pathParts[1];
+                } elseif (isset($pathParts[1])) {
+            $id = (int)$pathParts[1];
             $data = json_decode(file_get_contents('php://input'), true);
             if ($method === 'GET') {
                 echo json_encode($bookModel->findById($id));
