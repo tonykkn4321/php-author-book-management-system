@@ -54,7 +54,7 @@ $authorModel = new Author($db);
 $bookModel = new Book($db);
 
 // CORS headers
-header("Access-Control-Allow-Origin: http://localhost:8000");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
